@@ -24,7 +24,7 @@ export default {
 
     // Unique URL/string
     {
-      slug: 'slug',
+      name: 'slug',
       title: 'Slug',
       type: 'slug',
       options: {
