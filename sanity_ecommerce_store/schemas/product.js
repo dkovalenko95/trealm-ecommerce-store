@@ -12,7 +12,7 @@ export default {
       of: [{ type: 'image' }],
       options: {
         hotspot: true,
-      }
+      },
     },
 
     // Name
@@ -45,6 +45,6 @@ export default {
       name: 'details',
       title: 'Details',
       type: 'string',
-    }
-  ]
+    },
+  ],
 };
