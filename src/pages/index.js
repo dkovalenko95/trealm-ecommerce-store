@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { client } from '../lib/client';
+
 import { HeroBanner, Product, FooterBanner } from './../components/index';
 
-const Home = () => {
+const Home = ({ products, bannerData }) => {
   return (
     <>
-      <HeroBanner />
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+      {console.log(bannerData)}
 
       <div className='products-heading'>
         <h2>Best Selling Products</h2>
@@ -13,12 +16,28 @@ const Home = () => {
       </div>
 
       <div className='products-container'>
-        {['Prod 1', 'Prod 2', 'Prod 3'].map((product) => product)}
+        {products?.map((product) => product.name)}
       </div>
 
       <FooterBanner />
     </>
   );
 };
+
+// Fetch data from CMS
+// https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props
+export const getServerSideProps = async () => {
+  // Sanity query -> take all prods from Sanity dashboard
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  // Take banner
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery);
+
+  return {
+    props: { products, bannerData }
+  }
+}; // -> whatever getServerSideProps() returns that gets populated in comp
 
 export default Home;
