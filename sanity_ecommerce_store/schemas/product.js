@@ -22,7 +22,7 @@ export default {
       type: 'string',
     },
 
-    // Unique URL/string
+    // Slug - Unique URL/string
     {
       name: 'slug',
       title: 'Slug',
