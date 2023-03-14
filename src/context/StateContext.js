@@ -64,28 +64,45 @@ export const StateContext = ({ children }) => {
 
     // Inc/dec def acts
     if (value === 'inc') {
-      setCartItems([
-        ...filteredCartItems,
-        { 
-          ...foundProduct,
-          quantity: foundProduct.quantity + 1,
-        }
-      ]);
+      setCartItems(prevCartItems => (
+        prevCartItems.map(item => {
+          if (item._id === id) {
+            return {
+              ...item,
+              quantity: foundProduct.quantity + 1,
+            };
+          } else {
+            return item;
+          };
+        })
+      )); // -> new prods arr: filtered not updated prods + actual selected updated qty prod
+      // console.log(cartItems);
+
+      // setCartItems([ ...filteredCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 }]); // -> new prods arr: filtered not updated prods + actual selected updated qty prod
+
       setTotalPrice(prevTotalPrice => prevTotalPrice + foundProduct.price);
       setTotalQties(prevTotalQties => prevTotalQties + 1);
 
     } else if (value === 'dec') {
       if (foundProduct.quantity > 1) {
-        setCartItems([
-          ...filteredCartItems,
-          {
-            ...foundProduct,
-            quantity: foundProduct.quantity - 1,
-          }
-        ]);
+        setCartItems(prevCartItems => (
+          prevCartItems.map(item => {
+            if (item._id === id) {
+              return {
+                ...item,
+                quantity: foundProduct.quantity - 1,
+              };
+            } else {
+              return item;
+            };
+          })
+        ));
+
+        // setCartItems([ ...filteredCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 }]);
+
         setTotalPrice(prevTotalPrice => prevTotalPrice - foundProduct.price);
         setTotalQties(prevTotalQties => prevTotalQties - 1);
-      }
+      };
     };
   };
 
