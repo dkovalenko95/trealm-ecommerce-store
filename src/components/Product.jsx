@@ -3,11 +3,13 @@ import Link from 'next/link';
 
 // urlFor - used to get the url for the image inside sanity dashboard
 import { urlFor } from '../lib/client';
+import { useStateContext } from '../context/StateContext';
 
 const Product = ({ product: { image, name, slug, price } }) => {
+  const { setQty } = useStateContext();
   return (
     <div>
-      <Link href={`/product/${slug.current}`}>
+      <Link onClick={() => setQty(1)} href={`/product/${slug.current}`}>
         <div className='product-card'>
           <img
             className='product-image'
