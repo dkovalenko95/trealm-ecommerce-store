@@ -52,11 +52,20 @@ export const StateContext = ({ children }) => {
     toast.success(`${qty} ${product.name} added to the cart!`);
   };
 
+  const onRemoveProduct = product => {
+    foundProduct = cartItems.find(item => item._id === product._id); // -> prod want to remove
+    const newCartItems = cartItems.filter(item => item._id !== product._id); // -> prods NOT want to remove
+
+    setTotalPrice(prevTotalPrice => prevTotalPrice - foundProduct.price * foundProduct.quantity);
+    setTotalQties(prevTotalQties => prevTotalQties - foundProduct.quantity);
+    setCartItems(newCartItems);
+  };
+
   // Toggle prod qty inside the Cart
   const toggleCartItemQty = (id, value) => {
     foundProduct = cartItems.find(item => item._id === id); // -> prod want to update
     indexProp = cartItems.findIndex(product => product._id === id); // -> index of prod want ot update
-    const filteredCartItems = cartItems.filter(item => item._id !== id); // -> prods NOT want to update
+    // const filteredCartItems = cartItems.filter(item => item._id !== id); // -> prods NOT want to update
 
     // console.log(filteredCartItems);
     // console.log(foundProduct);
@@ -64,16 +73,22 @@ export const StateContext = ({ children }) => {
 
     // Inc/dec def acts
     if (value === 'inc') {
+
+      // NOTE: Solution that preserves order of items in list, when inc/dec
       setCartItems(prevCartItems => (
+
+        // Go through arr to find clicked item
         prevCartItems.map(item => {
+
+          // Define selected clicked item
           if (item._id === id) {
             return {
               ...item,
               quantity: foundProduct.quantity + 1,
-            };
+            }; // -> change qty of selected item
           } else {
             return item;
-          };
+          }; // -> other not selected items remains the same
         })
       )); // -> new prods arr: filtered not updated prods + actual selected updated qty prod
       // console.log(cartItems);
@@ -120,6 +135,7 @@ export const StateContext = ({ children }) => {
         decQty,
         onAddProduct,
         toggleCartItemQty,
+        onRemoveProduct,
       }}>
       {children}
     </Context.Provider>
