@@ -62,7 +62,7 @@ export const StateContext = ({ children }) => {
   };
 
   // Toggle prod qty inside the Cart
-  const toggleCartItemQty = (id, value) => {
+  const toggleCartItemQty = (id, type) => {
     foundProduct = cartItems.find(item => item._id === id); // -> prod want to update
     indexProp = cartItems.findIndex(product => product._id === id); // -> index of prod want ot update
     // const filteredCartItems = cartItems.filter(item => item._id !== id); // -> prods NOT want to update
@@ -72,7 +72,7 @@ export const StateContext = ({ children }) => {
     // console.log(indexProp);
 
     // Inc/dec def acts
-    if (value === 'inc') {
+    if (type === 'inc') {
 
       // NOTE: Solution that preserves order of items in list, when inc/dec
       setCartItems(prevCartItems => (
@@ -98,7 +98,7 @@ export const StateContext = ({ children }) => {
       setTotalPrice(prevTotalPrice => prevTotalPrice + foundProduct.price);
       setTotalQties(prevTotalQties => prevTotalQties + 1);
 
-    } else if (value === 'dec') {
+    } else if (type === 'dec') {
       if (foundProduct.quantity > 1) {
         setCartItems(prevCartItems => (
           prevCartItems.map(item => {
