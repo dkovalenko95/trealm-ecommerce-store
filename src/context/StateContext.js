@@ -12,7 +12,7 @@ export const StateContext = ({ children }) => {
 
   // Variables for Cart qty toggle
   let foundProduct; // -> item want to update
-  let indexProp; // -> index of item want ot update in cartItems
+  // let indexProp; // -> index of item want ot update in cartItems
 
   // Inc/dec prod inside ProductDetails
   const incQty = () => {

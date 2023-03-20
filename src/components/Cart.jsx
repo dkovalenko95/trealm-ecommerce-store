@@ -6,9 +6,35 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { urlFor } from '../lib/client';
 import { useStateContext } from '../context/StateContext';
 
+import getStripe from '../lib/getStripe';
+
 const Cart = () => {
   const cartRef = useRef();
   const { setShowCart, cartItems, totalQties, totalPrice, toggleCartItemQty, onRemoveProduct } = useStateContext();
+
+  // Payment handle
+  const handleCheckout = async () => {
+    // Get specific instance of Stripe
+    const stripe = await getStripe();
+
+    // API req to our own Nextjs backend
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    // Server error
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+    // UI notification
+    toast.loading('Redirecting...');
+    // Instance of a checkout
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   return (
     <div
@@ -100,7 +126,7 @@ const Cart = () => {
               <button
                 type='button'
                 className='btn'
-                // onClick={}
+                onClick={handleCheckout}
               >
                 Pay with Stripe
               </button>
