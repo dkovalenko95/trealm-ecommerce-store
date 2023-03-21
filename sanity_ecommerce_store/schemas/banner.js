@@ -11,14 +11,30 @@ export default {
         hotspot: true,
       },
     },
+    // Name
     {
-      name: 'buttonText',
-      title: 'ButtonText',
+      name: 'name',
+      title: 'Name',
       type: 'string',
+    },
+    // Slug - Unique URL/string
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name',
+        maxLength: 90,
+      }
     },
     {
       name: 'product',
       title: 'Product',
+      type: 'string',
+    },
+    {
+      name: 'buttonText',
+      title: 'ButtonText',
       type: 'string',
     },
     {
