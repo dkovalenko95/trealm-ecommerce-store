@@ -23,7 +23,7 @@ const HeroBanner = ({ heroBanner }) => {
           </Link>
           <div className={styles.desc}>
             <h4>{heroBanner.name}</h4>
-            <h5>Description</h5>
+            <h5>About</h5>
             <p>{heroBanner.desc}</p>
           </div>
         </div>

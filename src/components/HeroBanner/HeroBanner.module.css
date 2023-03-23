@@ -1,7 +1,8 @@
 .hero-banner-container {
   position: relative;
   padding: 100px 40px;
-  background-color: #dcdcdc;
+  /* background-color: #dcdcdc; */
+  background-color: #cadced;
   height: 500px;
   border-radius: 15px;
   line-height: 0.9; 
