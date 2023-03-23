@@ -62,6 +62,7 @@ export default async function handler(req, res) {
             quantity: item.quantity,
           }
         }),
+        // Link to success page after confirm payment
         success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/canceled`,
       }

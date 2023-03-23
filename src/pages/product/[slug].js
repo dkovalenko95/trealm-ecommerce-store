@@ -9,7 +9,12 @@ import styles from './slug.module.css';
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [imgIndex, setImgIndex] = useState(0);
-  const { incQty, decQty, qty, onAddProduct } = useStateContext();
+  const { incQty, decQty, qty, onAddProduct, setShowCart } = useStateContext();
+
+  const handleBuyNow = () => {
+    onAddProduct(product, qty);
+    setShowCart(true);
+  };
 
   return (
     <div>
@@ -45,7 +50,7 @@ const ProductDetails = ({ product, products }) => {
               <AiFillStar />
               <AiOutlineStar />
             </div>
-            <p>(20)</p>
+            <p>(15)</p>
           </div>
           <h4>Details: </h4>
           <p>{details}</p>
@@ -82,7 +87,7 @@ const ProductDetails = ({ product, products }) => {
             <button
               type='button'
               className={styles['buy-now']}
-              // onClick={}
+              onClick={handleBuyNow}
             >
               Buy Now
             </button>
