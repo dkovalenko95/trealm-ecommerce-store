@@ -1,0 +1,41 @@
+.navbar-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 32px;
+}
+
+.logo {
+  color: gray;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cart-icon {
+  position: relative;
+  color: gray;
+  font-size: 32px;
+  border: none;
+  transition: transform .4s ease;
+  background-color: transparent;
+  cursor: pointer;
+}
+.cart-icon:hover {
+  transform: scale(1.1,1.1);
+}
+
+.cart-item-qty {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  right: -8px;
+  color: #eee;
+  background-color: #e94822;
+  border-radius: 50%;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+
+

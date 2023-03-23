@@ -1,18 +1,19 @@
 import React from 'react';
 import { client } from '../lib/client';
 import { HeroBanner, Product, FooterBanner } from './../components/index';
+import styles from './index.module.css';
 
 const Home = ({ products, bannerData }) => {
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
-      <div className='products-heading'>
+      <div className={styles['products-heading']}>
         <h2>Best Selling Products</h2>
         <p>A large selection of high quality headphones</p>
       </div>
 
-      <div className='products-container'>
+      <div className={styles['products-container']}>
         {products?.map((product) => 
           <Product 
             key={product._id}
