@@ -1,11 +1,20 @@
 import React from 'react';
 import { client } from '../lib/client';
-import { HeroBanner, Product, FooterBanner } from './../components/index';
+import { HeroBanner, Product, FooterBanner, Tabs } from './../components/index';
 import styles from './index.module.css';
 
 const Home = ({ products, bannerData }) => {
   return (
     <>
+      {/* <Tabs 
+        title={'Tabs'}
+        tabs={[
+          { name: 'Laptops', content: ['HP', 'ASUS', 'APPLE']},
+          { name: 'HeadPhones', content: ['SONY', 'APPLE'] },
+          { name: 'EarPhones', content: ['APPLE', 'VIC', 'PAC'] },
+          { name: 'Other', content: ['WATCH', 'SPEAKER'] },
+        ]}
+      /> */}
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
       <div className={styles['products-heading']}>
