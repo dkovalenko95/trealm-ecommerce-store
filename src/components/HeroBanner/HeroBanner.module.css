@@ -47,7 +47,7 @@
   top: 3%;
   right: 15%;
   width: 420px;
-  height: 420px;
+  /* height: 420px; */
 }
 
 .desc {
@@ -87,7 +87,7 @@
     top: 4%;
     right: 18%;
     width: 400px;
-    height: 400px;
+    /* height: 400px; */
   }
   .hero-banner-container h1 {
     color: white;
@@ -105,7 +105,7 @@
 @media screen and (max-width:768px) {
   .hero-banner-image {
     width: 380px;
-    height: 380px;
+    /* height: 380px; */
     top: 3%;
     right: 0%;
   }
@@ -142,7 +142,7 @@
 @media screen and (max-width:576px) {
   .hero-banner-image {
     width: 320px;
-    height: 320px;
+    /* height: 320px; */
     top: 5%;
     right: 0%;
   }
@@ -178,7 +178,7 @@
 @media screen and (max-width:425px) {
   .hero-banner-image {
     width: 280px;
-    height: 280px;
+    /* height: 280px; */
     top: 5%;
     right: 0%;
   }
