@@ -34,7 +34,7 @@ function TabView({ tabs }) {
 
             {/* Content */}
             <ul className={styles.content}>
-              {tabs[activeTabIndex].content.map((item, i) => <li key={i}>{item}</li> )}
+              {tabs[activeTabIndex].content.map((item, i) => <li key={i}>{item}</li>)}
             </ul>
           </div>
         )}

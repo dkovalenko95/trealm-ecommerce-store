@@ -3,9 +3,9 @@ import { client } from '../lib/client';
 import { HeroBanner, Product, FooterBanner, Tabs } from './../components/index';
 import styles from './index.module.css';
 
-const Home = ({ bannerData, laptoptsData, headphonesData, headphonesTWSData, otherData }) => {
+const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headphonesTWSData, otherData }) => {
+  console.log(bestsellersData);
   const allProducts = [...laptoptsData, ...headphonesData, ...headphonesTWSData, ...otherData];
-  // console.log(allProducts);
   const all = allProducts.map(product => (
     <Product 
       key={product._id}
@@ -13,6 +13,12 @@ const Home = ({ bannerData, laptoptsData, headphonesData, headphonesTWSData, oth
     />
   ));
 
+  const bestsellers = bestsellersData.map(product => (
+    <Product
+      key={product._id}
+      product={product}
+    />
+  ))
   const laptops = laptoptsData.map(product => (
     <Product 
       key={product._id}
@@ -37,7 +43,6 @@ const Home = ({ bannerData, laptoptsData, headphonesData, headphonesTWSData, oth
       product={product}
     />
   ));
-  // console.log(laptops, headphones, headphonesTWS, other);
 
   return (
     <>
@@ -51,6 +56,7 @@ const Home = ({ bannerData, laptoptsData, headphonesData, headphonesTWSData, oth
       <Tabs 
         title={'Products Tabs'}
         tabs={[
+          { name: 'Bestsellers', content: bestsellers },
           { name: 'All', content: all },
           { name: 'Laptops', content: laptops },
           { name: 'HeadPhones', content: headphones },
@@ -68,7 +74,7 @@ const Home = ({ bannerData, laptoptsData, headphonesData, headphonesTWSData, oth
         }
       </div> */}
 
-      <FooterBanner footerBanner={bannerData && bannerData[0]} />
+      {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
     </>
   );
 };
@@ -83,6 +89,9 @@ export const getServerSideProps = async () => {
   // Banner
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
+  //Bestsellers
+  const bestsellersQuery = '*[_type == "bestseller"]';
+  const bestsellersData = await client.fetch(bestsellersQuery);
   // Laptops
   const laptopsQuery = '*[_type == "laptops"]';
   const laptoptsData = await client.fetch(laptopsQuery);
@@ -99,6 +108,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       bannerData,
+      bestsellersData,
       laptoptsData,
       headphonesData,
       headphonesTWSData,
