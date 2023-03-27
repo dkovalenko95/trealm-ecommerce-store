@@ -74,7 +74,7 @@ const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headp
         }
       </div> */}
 
-      {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   );
 };
