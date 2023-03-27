@@ -1,6 +1,6 @@
 export default {
-  name: 'all-products',
-  title: 'All Products',
+  name: 'laptops',
+  title: 'Laptops',
   type: 'document',
   fields: [
     // Img
@@ -35,6 +35,12 @@ export default {
       title: 'Price',
       type: 'number',
     },
+    // Old price
+    {
+      name: 'oldPrice',
+      title: 'Old price',
+      type: 'number',
+    },
     // Details
     {
       name: 'details',
@@ -43,3 +49,4 @@ export default {
     },
   ],
 };
+

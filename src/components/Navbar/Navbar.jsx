@@ -12,7 +12,7 @@ const Navbar = () => {
     <header>
       <nav className={styles['navbar-container']}>
         <p className={styles.logo}>
-          <Link href='/'>SNDRealm 🎧</Link>
+          <Link href='/'>TRealm 💻</Link>
         </p>
         <button
           type='button'

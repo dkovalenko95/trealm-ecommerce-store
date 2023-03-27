@@ -1,5 +1,5 @@
 .navbar-container {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255, 0.92);
   position: fixed;
   top: 0;
   height: 75px;
@@ -39,7 +39,7 @@
   height: 21px;
   right: -8px;
   color: #eee;
-  background-color: #e94822;
+  background-color: #ff5a1e;
   border-radius: 50%;
   font-size: 14px;
   text-align: center;

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { client, urlFor } from '../../lib/client';
-import { Product } from '../../components';
+import Product from '../../components/Product/Product';
 import { useStateContext } from '../../context/StateContext';
 import styles from './slug.module.css';
 
@@ -115,7 +115,7 @@ const ProductDetails = ({ product, products }) => {
 // When you export a func called getStaticPaths() (Static Site Generation) from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths()
 // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
 export const getStaticPaths = async () => {
-  const query = `*[_type == "product"] {
+  const query = `*[_type == "laptops"] {
     slug {
       current
     }
@@ -140,13 +140,13 @@ export const getStaticPaths = async () => {
 // https://nextjs.org/docs/basic-features/data-fetching/get-static-props
 // Fetch prod details
 export const getStaticProps = async ({ params: { slug } }) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const similarProductsQuery = '*[_type == "product"]';
+  const query = `*[_type == "laptops" && slug.current == '${slug}'][0]`;
+  const similarProductsQuery = '*[_type == "laptops"]';
 
   const product = await client.fetch(query);
   const products = await client.fetch(similarProductsQuery);
 
-  console.log(product);
+  // console.log(product);
 
   return {
     props: { product, products }

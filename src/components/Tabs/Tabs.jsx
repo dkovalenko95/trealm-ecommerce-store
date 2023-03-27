@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import styles from './Tabs.module.css';
 
-function TabView({ tabs = [] }) {
+function TabView({ tabs }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+  console.log(activeTabIndex)
  
   const activateTab = i => {
     setActiveTabIndex(i);
   };
 
   return (
-    <div className={styles.TabView}>
+    <div className={styles.tabView}>
       <div className={styles.body}>
 
         {/* TABS */}
@@ -23,7 +24,7 @@ function TabView({ tabs = [] }) {
               {tabs.map((tab, i) => (
                 <label
                   key={i}
-                  className={i === activeTabIndex ? `${styles['active-tab']}}` : `${styles.tab}`}
+                  className={i === activeTabIndex ? `${styles['active-tab']}` : `${styles.tab}`}
                   onClick={() => activateTab(i)}
                 >
                   {tab.name}
@@ -32,9 +33,9 @@ function TabView({ tabs = [] }) {
             </div>
 
             {/* Content */}
-            <div className={styles.content}>
-              {tabs[activeTabIndex].content.map(item => <li key={item}>{item}</li> )}
-            </div>
+            <ul className={styles.content}>
+              {tabs[activeTabIndex].content.map((item, i) => <li key={i}>{item}</li> )}
+            </ul>
           </div>
         )}
       </div>
