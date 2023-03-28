@@ -3,8 +3,7 @@ import styles from './Tabs.module.css';
 
 function TabView({ tabs }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  console.log(activeTabIndex)
- 
+
   const activateTab = i => {
     setActiveTabIndex(i);
   };

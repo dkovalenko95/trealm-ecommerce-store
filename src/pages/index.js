@@ -4,7 +4,7 @@ import { HeroBanner, Product, FooterBanner, Tabs } from './../components/index';
 import styles from './index.module.css';
 
 const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headphonesTWSData, otherData }) => {
-  console.log(bestsellersData);
+  // console.log(bestsellersData);
 
   // TODO: Randomize allProds
   const allProducts = [...laptoptsData, ...headphonesData, ...headphonesTWSData, ...otherData];
