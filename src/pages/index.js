@@ -5,6 +5,8 @@ import styles from './index.module.css';
 
 const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headphonesTWSData, otherData }) => {
   console.log(bestsellersData);
+
+  // TODO: Randomize allProds
   const allProducts = [...laptoptsData, ...headphonesData, ...headphonesTWSData, ...otherData];
   const all = allProducts.map(product => (
     <Product 
