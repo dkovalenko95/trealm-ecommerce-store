@@ -6,24 +6,26 @@ import styles from './Layout.module.css';
 
 const Layout = ({ children }) => {
   return (
-    <div className={styles.layout}>
+    <>
       <Head>
-        <title>SNDRealm</title>
+        <title>TRealm</title>
       </Head>
 
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
 
-      <main className={styles['main-container']}>
-        {/* children - <Component/> in _app.js */}
-        {children}
-      </main>
+      <div className={styles.layout}>
 
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+        <main className={styles['main-container']}>
+          {/* children - <Component/> in _app.js */}
+          {children}
+        </main>
+
+        <footer>
+          <Footer />
+        </footer>
+
+      </div>
+    </>
   );
 };
 

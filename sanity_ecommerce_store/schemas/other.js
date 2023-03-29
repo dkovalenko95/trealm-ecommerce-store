@@ -1,9 +1,8 @@
 export default {
-  name: 'product',
-  title: 'Product',
+  name: 'other',
+  title: 'Other',
   type: 'document',
   fields: [
-
     // Img
     {
       name: 'image',
@@ -14,14 +13,12 @@ export default {
         hotspot: true,
       },
     },
-
     // Name
     {
       name: 'name',
       title: 'Name',
       type: 'string',
     },
-
     // Slug - Unique URL/string
     {
       name: 'slug',
@@ -32,14 +29,18 @@ export default {
         maxLength: 90,
       }
     },
-
     // Price
     {
       name: 'price',
       title: 'Price',
       type: 'number',
     },
-
+    // Old price
+    {
+      name: 'oldPrice',
+      title: 'Old price',
+      type: 'number',
+    },
     // Details
     {
       name: 'details',

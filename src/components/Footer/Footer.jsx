@@ -5,7 +5,7 @@ import styles from './Footer.module.css';
 const Footer = () => {
   return (
     <div className={styles['footer-container']}>
-      <p>2023 SoundRealm. All rights reserved</p>
+      <p>2023 TRealm. All rights reserved</p>
       <p className={styles.icons}>
         <AiFillInstagram />
         <AiOutlineTwitter />

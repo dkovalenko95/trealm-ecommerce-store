@@ -8,11 +8,16 @@ body, * {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 ::-webkit-scrollbar {
-  width: 0px;
+  /* width: 0px; */
 }
 a {
   text-decoration: none;
   color: inherit;
+}
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* .max-qty { font-weight: 500; color: #f02d34; } */

@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { client, urlFor } from '../../lib/client';
-import { Product } from '../../components';
+import Product from '../../components/Product/Product';
 import { useStateContext } from '../../context/StateContext';
 import styles from './slug.module.css';
 
 const ProductDetails = ({ product, products }) => {
-  const { image, name, details, price } = product;
+  console.log(products);
+  const { image, name, details, price, oldPrice } = product;
   const [imgIndex, setImgIndex] = useState(0);
   const { incQty, decQty, qty, onAddProduct, setShowCart } = useStateContext();
 
@@ -54,6 +55,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <h4>Details: </h4>
           <p>{details}</p>
+          {oldPrice && <p className={styles.oldPrice}>${oldPrice}</p>}
           <p className={styles.price}>${price}</p>
           <div className={styles.quantity}>
             <h3>Quantity:</h3>
@@ -115,22 +117,30 @@ const ProductDetails = ({ product, products }) => {
 // When you export a func called getStaticPaths() (Static Site Generation) from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths()
 // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
 export const getStaticPaths = async () => {
-  const query = `*[_type == "product"] {
-    slug {
-      current
-    }
-  }`;
-
-  const products = await client.fetch(query);
-
-  const paths = products.map(product => ({
-    params: {
-      slug: product.slug.current
-    }
+  // TODO: Build func to optimaze query(...'type' as arg...)
+  const laptopsQuery = `*[_type == "laptops"] { slug { current } }`;
+  const laptopsProducts = await client.fetch(laptopsQuery);
+  const laptopsPaths = laptopsProducts.map(product => ({
+    params: { slug: product.slug.current }
   }));
-
+  const headphonesQuery = `*[_type == "headphones"] { slug { current } }`;
+  const headphonesProducts = await client.fetch(headphonesQuery);
+  const headphonesPaths = headphonesProducts.map(product => ({
+    params: { slug: product.slug.current }
+  }));
+  const headphonesTWSQuery = `*[_type == "headphones-tws"] { slug { current } }`;
+  const headphonesTWSProducts = await client.fetch(headphonesTWSQuery);
+  const headphonesTWSPaths = headphonesTWSProducts.map(product => ({
+    params: { slug: product.slug.current }
+  }));
+  const otherQuery = `*[_type == "other"] { slug { current } }`;
+  const otherProducts = await client.fetch(otherQuery);
+  const otherPaths = otherProducts.map(product => ({
+    params: { slug: product.slug.current }
+  }));
+  
   return {
-    paths,
+    paths: [],
     fallback: 'blocking'
   }
 };
@@ -140,13 +150,34 @@ export const getStaticPaths = async () => {
 // https://nextjs.org/docs/basic-features/data-fetching/get-static-props
 // Fetch prod details
 export const getStaticProps = async ({ params: { slug } }) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const similarProductsQuery = '*[_type == "product"]';
+  // TODO: Build func to optimaze query(...'type' as arg...)
+  const laptopsQuery = `*[_type == "laptops" && slug.current == '${slug}'][0]`;
+  const headphonesQuery = `*[_type == "headphones" && slug.current == '${slug}'][0]`;
+  const headphonesTWSQuery = `*[_type == "headphones-tws" && slug.current == '${slug}'][0]`;
+  const otherQuery = `*[_type == "other" && slug.current == '${slug}'][0]`;
 
-  const product = await client.fetch(query);
-  const products = await client.fetch(similarProductsQuery);
+  const laptopsProduct = await client.fetch(laptopsQuery);
+  const headphonesProduct = await client.fetch(headphonesQuery);
+  const headphonesTWSProduct = await client.fetch(headphonesTWSQuery);
+  const otherProduct = await client.fetch(otherQuery);
 
-  console.log(product);
+  const product = laptopsProduct || headphonesProduct || headphonesTWSProduct || otherProduct;
+
+  const similarLaptoptsQuery = '*[_type == "laptops"]';
+  const similarHeadphonesQuery = '*[_type == "headphones"]';
+  const similarHeadphonesTWSQuery = '*[_type == "headphones-tws"]';
+  const similarOtherQuery = '*[_type == "other"]';
+
+  const similarLaptops = await client.fetch(similarLaptoptsQuery);
+  const similarHeadphones = await client.fetch(similarHeadphonesQuery);
+  const similarHeadphonesTWS = await client.fetch(similarHeadphonesTWSQuery);
+  const similarOther = await client.fetch(similarOtherQuery);
+
+  let products;
+  if (laptopsProduct) products = similarLaptops;
+  if (headphonesProduct) products = similarHeadphones;
+  if (headphonesTWSProduct) products = similarHeadphonesTWS;
+  if (otherProduct) products = similarOther;
 
   return {
     props: { product, products }

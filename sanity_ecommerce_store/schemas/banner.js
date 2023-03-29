@@ -11,13 +11,11 @@ export default {
         hotspot: true,
       },
     },
-    // Name
     {
       name: 'name',
       title: 'Name',
       type: 'string',
     },
-    // Slug - Unique URL/string
     {
       name: 'slug',
       title: 'Slug',
@@ -31,6 +29,16 @@ export default {
       name: 'product',
       title: 'Product',
       type: 'string',
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'number',
+    },
+    {
+      name: 'oldPrice',
+      title: 'Old price',
+      type: 'number',
     },
     {
       name: 'buttonText',

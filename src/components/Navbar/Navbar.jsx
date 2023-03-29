@@ -9,23 +9,23 @@ const Navbar = () => {
   const { showCart, setShowCart, totalQties } = useStateContext();
 
   return (
-    <div className={styles['navbar-container']}>
+    <header>
+      <nav className={styles['navbar-container']}>
+        <p className={styles.logo}>
+          <Link href='/'>TRealm 💻</Link>
+        </p>
+        <button
+          type='button'
+          className={styles['cart-icon']}
+          onClick={() => setShowCart(true)}
+        >
+          <AiOutlineShopping />
+          <span className={styles['cart-item-qty']}>{totalQties}</span>
+        </button>
 
-      <p className={styles.logo}>
-        <Link href='/'>SNDRealm 🎧</Link>
-      </p>
-
-      <button
-        type='button'
-        className={styles['cart-icon']}
-        onClick={() => setShowCart(true)}
-      >
-        <AiOutlineShopping />
-        <span className={styles['cart-item-qty']}>{totalQties}</span>
-      </button>
-
-      {showCart && <Cart />}
-    </div>
+        {showCart && <Cart />}
+      </nav>
+    </header>
   );
 };
 

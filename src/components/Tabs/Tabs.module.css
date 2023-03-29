@@ -1,40 +1,56 @@
-.TabView {
+.tabView {
   width: 100%;
 }
 
-.TabView .title {
+.tabView .title {
   font-weight: bold;
-  padding: 0.5em;
+  padding: 8px;
 }
 
-.TabView .body {
-  padding: 1em;
+.tabView .body {
+  padding: 16px;
 }
 
-.TabView .tabs {
+.tabView .tabs {
+  margin-bottom: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.TabView .tabs .tab {
-  padding: 5px 1em;
-  border: 1px solid gray;
+.tabView .tabs .tab {
+  padding: 5px 16px;
+  border: 1px solid #d5eeff;
+  background-color: #d5eeff;
+  border-radius: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+  box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+.tabView .tabs .tab:hover {
+  border: 1px solid #b4defa;
+  background-color: #b4defa;
 }
 
-.TabView .tabs .active-tab {
-  padding: 5px 1em;
-  border-left: 1px solid gray;
-  border-top: 1px solid gray;
-  border-right: 1px solid gray;
-  background-color: lightgray;
+.tabView .tabs .active-tab {
+  padding: 5px 16px;
+  background-color: #007cb9;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-.TabView .content {
+.tabView .content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  padding: 1em;
-  background-color: lightgrey;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 16px;
+  border-radius: 16px;
+  background-color: #d5eeff;
+  box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
