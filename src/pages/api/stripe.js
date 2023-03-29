@@ -1,4 +1,5 @@
 // Next js Stripe back-end - Stripe Checkout page
+// Stripe works in 'test mode' - no real payments work in the app
 import Stripe from 'stripe';
 
 // Create Stripe Instance

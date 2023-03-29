@@ -1,4 +1,4 @@
-// Fact that name of file is inside of square brackets '[slug].js' means that this comp is going to be dynamic
+// Name of file is inside of square brackets '[slug].js' means that this comp is dynamic
 import React, { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { client, urlFor } from '../../lib/client';
@@ -7,7 +7,6 @@ import { useStateContext } from '../../context/StateContext';
 import styles from './slug.module.css';
 
 const ProductDetails = ({ product, products }) => {
-  console.log(products);
   const { image, name, details, price, oldPrice } = product;
   const [imgIndex, setImgIndex] = useState(0);
   const { incQty, decQty, qty, onAddProduct, setShowCart } = useStateContext();
@@ -114,10 +113,8 @@ const ProductDetails = ({ product, products }) => {
 };
 
 // If a page has Dynamic Routes and uses getStaticProps(), it needs to define a list of paths to be statically generated.
-// When you export a func called getStaticPaths() (Static Site Generation) from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths()
-// https://nextjs.org/docs/basic-features/data-fetching/get-static-paths
+// By using getStaticPaths() (Static Site Generation) from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths()
 export const getStaticPaths = async () => {
-  // TODO: Build func to optimaze query(...'type' as arg...)
   const laptopsQuery = `*[_type == "laptops"] { slug { current } }`;
   const laptopsProducts = await client.fetch(laptopsQuery);
   const laptopsPaths = laptopsProducts.map(product => ({
@@ -145,12 +142,10 @@ export const getStaticPaths = async () => {
   }
 };
 
-// Pre-render this page at build time using the props returned
-// getStaticProps(): A method that tells the Next component to populate props and render into a static HTML page at BUILD time.
-// https://nextjs.org/docs/basic-features/data-fetching/get-static-props
+// Pre-render page at BUILD time using the props returned
+// getStaticProps() - tells Next comp to populate props and render into a static HTML page at BUILD time.
 // Fetch prod details
 export const getStaticProps = async ({ params: { slug } }) => {
-  // TODO: Build func to optimaze query(...'type' as arg...)
   const laptopsQuery = `*[_type == "laptops" && slug.current == '${slug}'][0]`;
   const headphonesQuery = `*[_type == "headphones" && slug.current == '${slug}'][0]`;
   const headphonesTWSQuery = `*[_type == "headphones-tws" && slug.current == '${slug}'][0]`;

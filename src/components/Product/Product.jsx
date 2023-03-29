@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-// urlFor - used to get the url for the image inside sanity dashboard
+// urlFor() - used to get the url for the img inside Sanity dashboard
 import { urlFor } from '../../lib/client';
 import { useStateContext } from '../../context/StateContext';
 import styles from './Product.module.css';
