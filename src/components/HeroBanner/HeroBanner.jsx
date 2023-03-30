@@ -12,7 +12,7 @@ const HeroBanner = ({ heroBanner }) => {
         <h3>{heroBanner.midText}</h3>
         <h1>{heroBanner.largeText1}</h1>
         <img
-          src={urlFor(heroBanner.image)}
+          src={urlFor(heroBanner.image).url()}
           alt='product'
           className={styles['hero-banner-image']}
         />

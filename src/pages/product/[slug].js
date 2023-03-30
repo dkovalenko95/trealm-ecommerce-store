@@ -23,7 +23,7 @@ const ProductDetails = ({ product, products }) => {
           <div>
             <img
               className={styles['product-detail-image']}
-              src={urlFor(image && image[imgIndex])}
+              src={urlFor(image && image[imgIndex]).url()}
               alt='product'
             />
           </div>
@@ -31,7 +31,7 @@ const ProductDetails = ({ product, products }) => {
             {image?.map((item, i) => (
               <img
                 key={item._key}
-                src={urlFor(item)}
+                src={urlFor(item).url()}
                 alt='similar image'
                 className={
                   i === imgIndex ? `${styles['small-image']} ${styles['selected-image']}` : `${styles['small-image']}`}

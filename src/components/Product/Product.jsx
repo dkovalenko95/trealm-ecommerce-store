@@ -14,7 +14,7 @@ const Product = ({ product: { image, name, slug, price, oldPrice } }) => {
         <div className={styles['product-card']}>
           <img
             className={styles['product-image']}
-            src={urlFor(image && image[0])}
+            src={urlFor(image && image[0]).url()}
             alt='product image'
           />
           <div className={styles['product-descr']}>
