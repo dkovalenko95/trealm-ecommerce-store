@@ -77,6 +77,7 @@ const Cart = () => {
               <img
                 className={styles['cart-product-image']}
                 src={urlFor(item?.image[0])}
+                alt='cart product image'
               />
               <div className={styles['item-desc']}>
                 <div className={`${styles.flex} ${styles.top}`}>

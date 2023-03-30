@@ -12,7 +12,7 @@ function TabView({ tabs }) {
     <div className={styles.tabView}>
       <div className={styles.body}>
 
-        {/* TABS */}
+        {/* Tabs */}
         {Object.keys(tabs).length === 0 ? (
           <div className={styles.tabs}>
             <div>No Tabs</div>

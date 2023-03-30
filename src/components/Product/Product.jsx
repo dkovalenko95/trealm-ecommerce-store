@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-// urlFor - used to get the url for the image inside sanity dashboard
+// urlFor() - used to get url of img from Sanity dashboard
 import { urlFor } from '../../lib/client';
 import { useStateContext } from '../../context/StateContext';
 import styles from './Product.module.css';
@@ -15,8 +15,7 @@ const Product = ({ product: { image, name, slug, price, oldPrice } }) => {
           <img
             className={styles['product-image']}
             src={urlFor(image && image[0])}
-            // width={250}
-            // height={250}
+            alt='product image'
           />
           <div className={styles['product-descr']}>
             <p className={styles['product-name']}>{name}</p>
