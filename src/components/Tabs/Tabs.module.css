@@ -1,16 +1,13 @@
 .tabView {
   width: 100%;
 }
-
 .tabView .title {
   font-weight: bold;
   padding: 8px;
 }
-
 .tabView .body {
   padding: 16px;
 }
-
 .tabView .tabs {
   margin-bottom: 8px;
   display: flex;
@@ -19,7 +16,6 @@
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .tabView .tabs .tab {
   padding: 5px 16px;
   border: 1px solid #d5eeff;
@@ -33,7 +29,6 @@
   border: 1px solid #b4defa;
   background-color: #b4defa;
 }
-
 .tabView .tabs .active-tab {
   padding: 5px 16px;
   background-color: #007cb9;
@@ -41,7 +36,6 @@
   border-radius: 10px;
   box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
-
 .tabView .content {
   display: flex;
   flex-direction: row;

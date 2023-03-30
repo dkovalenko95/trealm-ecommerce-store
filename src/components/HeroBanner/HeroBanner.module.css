@@ -40,20 +40,17 @@
 .hero-banner-container button:hover {
   transform: scale(1.1,1.1);
 }
-
 .hero-banner-image {
   position: absolute;
   top: 3%;
-  /* right: 15%; */
   right: 20%;
   width: 420px;
-  /* height: 420px; */
   z-index: 100;
+  /* right: 15%; */
+  /* height: 420px; */
 }
-
 .desc {
   position: absolute;
-  /* right: 10%; */
   right: 5%;
   bottom: 5%;
   width: 300px;
@@ -64,6 +61,7 @@
   padding: 16px;
   border-radius: 16px;
   box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  /* right: 10%; */
 }
 .desc h4 {
   margin-bottom: 8px;
@@ -102,7 +100,6 @@
     top: 4%;
     right: 16%;
     width: 390px;
-    /* height: 400px; */
   }
   .hero-banner-container h1 {
     color: white;
@@ -129,17 +126,14 @@
 @media screen and (max-width:768px) {
   .hero-banner-image {
     width: 350px;
-    /* height: 380px; */
     top: 3%;
     right: 2%;
   }
-
   .hero-banner-container button {
     padding: 10px 16px;
     margin: 40px 0px 0px 5px;
     font-size: 20px;
   }
-  
   .hero-banner-container h1 {
     color: white;
     font-size: 124px;
@@ -147,18 +141,17 @@
   .hero-banner-container h3 {
     font-size: 38px;
   }
-  
   .desc {
     line-height: 1.3;
   }
   .desc h4 {
     width: 140px;
     position: relative;
-    /* right: 35px; */
-    /* margin-bottom: 18px; */
     font-size: 20px;
     width: 140px;
     text-align: end;
+    /* right: 35px; */
+    /* margin-bottom: 18px; */
   }
   .desc h5 {
     margin-bottom: 8px;
@@ -181,7 +174,6 @@
     margin: 80px 0px 0px 5px;
     font-size: 20px;
   }
-
   .hero-banner-container h1 {
     color: white;
     font-size: 112px;
@@ -189,7 +181,6 @@
   .hero-banner-container h3 {
     font-size: 32px;
   }
-  
   .desc {
     line-height: 1.2;
     background-color: initial;
@@ -214,9 +205,9 @@
 @media screen and (max-width:425px) {
   .hero-banner-image {
     width: 275px;
-    /* height: 280px; */
     top: 4%;
     right: 1%;
+    /* height: 280px; */
   }
   .hero-banner-container {
     padding: 100px 25px;
@@ -226,7 +217,6 @@
     margin: 80px 0px 0px 0px;
     font-size: 18px;
   }
-
   .hero-banner-container h1 {
     color: white;
     font-size: 90px;
@@ -234,7 +224,6 @@
   .hero-banner-container h3 {
     font-size: 28px;
   }
-  
   .desc {
     line-height: 1.2;
     background-color: initial;

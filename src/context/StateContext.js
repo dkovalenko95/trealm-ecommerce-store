@@ -12,9 +12,9 @@ export const StateContext = ({ children }) => {
 
   // Variables for Cart qty toggle
   let foundProduct; // -> item want to update
-  // let indexProp; // -> index of item want ot update in cartItems
+  let indexProp;
 
-  // Inc/dec prod inside ProductDetails
+  // Inc/dec prod inside ProductDetails - [slug.js]
   const incQty = () => {
     setQty(prevQty => {
       return prevQty + 1;
@@ -45,7 +45,6 @@ export const StateContext = ({ children }) => {
       setCartItems(updatedItems);
     } else {
       product.quantity = quantity;
-      // console.log([ ...cartItems, { ...product }]);
       setCartItems([...cartItems, { ...product }]);
     };
 
@@ -65,16 +64,11 @@ export const StateContext = ({ children }) => {
   const toggleCartItemQty = (id, type) => {
     foundProduct = cartItems.find(item => item._id === id); // -> prod want to update
     indexProp = cartItems.findIndex(product => product._id === id); // -> index of prod want ot update
-    // const filteredCartItems = cartItems.filter(item => item._id !== id); // -> prods NOT want to update
-
-    // console.log(filteredCartItems);
-    // console.log(foundProduct);
-    // console.log(indexProp);
 
     // Inc/dec def acts
     if (type === 'inc') {
 
-      // NOTE: Solution that preserves order of items in list, when inc/dec
+      // Solution that preserves order of items in list, when inc/dec
       setCartItems(prevCartItems => (
 
         // Go through arr to find clicked item
@@ -90,10 +84,7 @@ export const StateContext = ({ children }) => {
             return item;
           }; // -> other not selected items remains the same
         })
-      )); // -> new prods arr: filtered not updated prods + actual selected updated qty prod
-      // console.log(cartItems);
-
-      // setCartItems([ ...filteredCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 }]); // -> new prods arr: filtered not updated prods + actual selected updated qty prod
+      )); // -> new prods []: filtered not updated prods + actual selected updated qty prod
 
       setTotalPrice(prevTotalPrice => prevTotalPrice + foundProduct.price);
       setTotalQties(prevTotalQties => prevTotalQties + 1);
@@ -112,8 +103,6 @@ export const StateContext = ({ children }) => {
             };
           })
         ));
-
-        // setCartItems([ ...filteredCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 }]);
 
         setTotalPrice(prevTotalPrice => prevTotalPrice - foundProduct.price);
         setTotalQties(prevTotalQties => prevTotalQties - 1);

@@ -13,13 +13,11 @@
   box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   z-index: 1000;
 }
-
 .logo {
   color: gray;
   font-size: 22px;
   cursor: pointer;
 }
-
 .cart-icon {
   position: relative;
   color: gray;
@@ -32,7 +30,6 @@
 .cart-icon:hover {
   transform: scale(1.1,1.1);
 }
-
 .cart-item-qty {
   position: absolute;
   width: 21px;
