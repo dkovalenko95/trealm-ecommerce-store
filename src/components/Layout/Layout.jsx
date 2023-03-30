@@ -8,7 +8,8 @@ const Layout = ({ children }) => {
   return (
     <>
       <Head>
-        <title>TRealm</title>
+        <title>TRealm | Tech Store</title>
+        <link rel='icon' type='image/png' sizes='16x16' href='/favicon.png'></link>
       </Head>
 
       <Navbar />
