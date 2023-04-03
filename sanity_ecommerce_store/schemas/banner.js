@@ -12,6 +12,11 @@ export default {
       },
     },
     {
+      name: 'bgColor',
+      title: 'Background Color',
+      type: 'string',
+    },
+    {
       name: 'name',
       title: 'Name',
       type: 'string',

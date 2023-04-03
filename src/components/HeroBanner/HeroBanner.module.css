@@ -1,31 +1,55 @@
+@keyframes slideout {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .hero-banner-container {
+  display: block;
   position: relative;
-  padding: 100px 40px;
-  background-color: #d5eeff;
-  height: 500px;
+  padding: 100px 55px;
+  height: 535px;
   border-radius: 15px;
   line-height: 0.9; 
   width: 100%;
   box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transition: block 0.3s ease-in-out;
+  animation-name: slideout;
+  animation-duration: 2s;
 }
+.hero-banner-container-bg-blue {
+  background-color: #d5eeff;
+}
+.hero-banner-container-bg-orange {
+  background-color: #ffd8be;
+}
+.hero-banner-container-bg-blue2 {
+  background-color: #bee1e6;
+}
+.hero-banner-container-bg-orange2 {
+  background-color: #ffba78;
+}
+
+
 .hero-banner-container .smallText {
   font-size: 20px;
 }
 .hero-banner-container h3 {
-  font-size: 64px;
+  font-size: 48px;
   margin-top: 4px;
 }
 .hero-banner-container h1 {
   color: white;
   font-size: 160px;
   margin-top: 4px;
-  margin-left: -20px;
   text-transform: uppercase;
 }
 .hero-banner-container button {
   padding: 12px 20px;
   margin: 40px 0px 0px 40px;
-  /* background-color: #e94822; */
   background-color: #ff5a1e;
   color: white;
   border: none;
@@ -44,24 +68,23 @@
   position: absolute;
   top: 3%;
   right: 20%;
-  width: 420px;
-  z-index: 100;
-  /* right: 15%; */
-  /* height: 420px; */
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
 }
 .desc {
   position: absolute;
-  right: 5%;
-  bottom: 5%;
-  width: 300px;
+  right: 6%;
+  bottom: 10%;
+  width: 350px;
   line-height: 1.4;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgb(255, 255, 255, 0.80);
   padding: 16px;
   border-radius: 16px;
   box-shadow: 0 15px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  /* right: 10%; */
+  z-index: 10;
 }
 .desc h4 {
   margin-bottom: 8px;
@@ -69,28 +92,38 @@
   font-size: 24px;
   align-self: flex-end;
   color: black;
+  text-align: end;
+  line-height: 105%;
 }
 .desc h5 {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-weight: 700;
   font-size: 16px;
   align-self: flex-end;
-  /* color: #324d67; */
-  color: #005689
-}
-.desc .oldPrice {
-  margin-bottom: 0px;
-  text-decoration: line-through;
-  color: #919191;
-}
-.desc .price {
-  font-size: 26px;
+  color: #005689;
 }
 .desc p {
   color: #3c3c3c;
   font-weight: 100;
   text-align: end;
   font-size: 14px;
+}
+.desc .price-discount-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.desc .price-discount-block .price {
+  font-size: 26px;
+}
+.desc .price-discount-block .discount {
+  font-size: 18px;
+  color: #ff5a1e;
+}
+.desc .oldPrice {
+  margin-bottom: 2px;
+  text-decoration: line-through;
+  color: #919191;
 }
 
 /* MEADIA */
@@ -100,23 +133,20 @@
     top: 4%;
     right: 16%;
     width: 390px;
+    height: 390px;
   }
   .hero-banner-container h1 {
     color: white;
     font-size: 148px;
     margin-top: 4px;
-    margin-left: -20px;
+    /* margin-left: -20px; */
     text-transform: uppercase;
-  }
-  .hero-banner-container h3 {
-    font-size: 48px;
-    margin-top: 4px;
   }
   .hero-banner-container button {
     margin: 40px 0px 0px 30px;
   }
   .desc {
-    width: 280px;
+    width: 300px;
   }
   .desc h4 {
     font-size: 20px;
@@ -126,12 +156,13 @@
 @media screen and (max-width:768px) {
   .hero-banner-image {
     width: 350px;
-    top: 3%;
-    right: 2%;
+    height: 350px;
+    top: 1%;
+    right: 5%;
   }
   .hero-banner-container button {
     padding: 10px 16px;
-    margin: 40px 0px 0px 5px;
+    margin: 60px 0px 0px 5px;
     font-size: 20px;
   }
   .hero-banner-container h1 {
@@ -145,11 +176,10 @@
     line-height: 1.3;
   }
   .desc h4 {
-    width: 140px;
     position: relative;
     font-size: 20px;
-    width: 140px;
     text-align: end;
+    /* width: 140px; */
     /* right: 35px; */
     /* margin-bottom: 18px; */
   }
@@ -164,14 +194,17 @@
 
 @media screen and (max-width:576px) {
   .hero-banner-image {
-    width: 310px;
-    /* height: 320px; */
-    top: 5%;
-    right: 3%;
+    width: 300px;
+    height: 300px;
+    top: 3%;
+    right: 8%;
+  }
+  .hero-banner-container {
+    padding: 60px 25px;
   }
   .hero-banner-container button {
     padding: 10px 16px;
-    margin: 80px 0px 0px 5px;
+    margin: 90px 0px 0px 5px;
     font-size: 20px;
   }
   .hero-banner-container h1 {
@@ -183,9 +216,9 @@
   }
   .desc {
     line-height: 1.2;
-    background-color: initial;
     box-shadow: initial;
-    width: 180px;
+    width: 230px;
+    background-color: initial;
   }
   .desc h4 {
     position: relative;
@@ -204,17 +237,17 @@
 
 @media screen and (max-width:425px) {
   .hero-banner-image {
-    width: 275px;
+    width: 250px;
     top: 4%;
-    right: 1%;
-    /* height: 280px; */
+    right: 4%;
+    height: 250px;
   }
   .hero-banner-container {
-    padding: 100px 25px;
+    padding: 50px 25px;
   }
   .hero-banner-container button {
     padding: 8px 14px;
-    margin: 80px 0px 0px 0px;
+    margin: 120px 0px 0px 0px;
     font-size: 18px;
   }
   .hero-banner-container h1 {
@@ -228,7 +261,7 @@
     line-height: 1.2;
     background-color: initial;
     box-shadow: initial;
-    width: 160px;
+    width: 200px;
     padding: 8px;
   }
   .desc h4 {
@@ -240,5 +273,10 @@
   .desc h5 {
     margin-bottom: 8px;
     font-size: 14px;
+  }
+  .desc .price-discount-block {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }

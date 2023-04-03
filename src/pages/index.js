@@ -1,6 +1,6 @@
 import React from 'react';
 import { client } from '../lib/client';
-import { HeroBanner, Product, FooterBanner, Tabs } from './../components/index';
+import { SliderHeroBanner, Product, FooterBanner, Tabs } from './../components/index';
 import styles from './index.module.css';
 
 const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headphonesTWSData, otherData }) => {
@@ -41,10 +41,11 @@ const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headp
       product={product}
     />
   ));
+  console.log(bannerData);
 
   return (
     <>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
+      <SliderHeroBanner slides={bannerData} />
 
       <div className={styles['products-heading']}>
         <h2>Choose product for you need</h2>
