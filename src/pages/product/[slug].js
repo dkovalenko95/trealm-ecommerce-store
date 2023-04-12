@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { client, urlFor } from '../../lib/client';
 import Product from '../../components/Product/Product';
+import ProductRatings from '../../components/ProductRatings/ProductRatings';
 import { useStateContext } from '../../context/StateContext';
 import styles from './slug.module.css';
 
@@ -52,6 +53,7 @@ const ProductDetails = ({ product, products }) => {
               <AiOutlineStar />
             </div>
             <p>(15)</p>
+            <ProductRatings product={product} />
           </div>
           <h4>Details: </h4>
           <p>{details}</p>
@@ -146,6 +148,7 @@ export const getStaticPaths = async () => {
 // Pre-render page at BUILD time using returned props 
 // getStaticProps() - tells Next comp to populate props and render into a static HTML page at BUILD time.
 // Fetch prod details
+// TODO: Fetch multiple documents in one go -> try to implement from Sanity docs
 export const getStaticProps = async ({ params: { slug } }) => {
   const laptopsQuery = `*[_type == "laptops" && slug.current == '${slug}'][0]`;
   const headphonesQuery = `*[_type == "headphones" && slug.current == '${slug}'][0]`;

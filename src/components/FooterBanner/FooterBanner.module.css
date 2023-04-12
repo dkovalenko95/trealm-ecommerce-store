@@ -143,16 +143,16 @@
     margin: 16px;
   }
   .footer-banner-image {
-    width: 270px;
-    height: 270px;
+    width: 250px;
+    height: 250px;
     top: -8%;
-    left: 16%;
+    left: 10%;
   }
   .banner-desc .right {
     line-height: 1.2;
   }
   .banner-desc .right h3 {
-    font-size: 28px;
+    font-size: 22px;
     margin-bottom: 5px;
   }
   .banner-desc .right p {
@@ -164,7 +164,7 @@
     font-size: 16px;
   }
   .footer-banner-container {
-    padding: 80px 25px;
+    padding: 80px 20px;
   }
   .banner-desc {
     gap: 15px;

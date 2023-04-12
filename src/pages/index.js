@@ -41,7 +41,6 @@ const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headp
       product={product}
     />
   ));
-  console.log(bannerData);
 
   return (
     <>
