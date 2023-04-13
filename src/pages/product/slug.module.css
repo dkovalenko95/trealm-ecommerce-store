@@ -47,7 +47,10 @@
   margin-top: 10px;
   display: flex;
   gap: 5px;
-  /* align-items: flex-start; */
+}
+.reviews p {
+  color: #324d67;
+  margin-top: 0px;
 }
 .product-detail-desc h4 {
   margin-top: 10px;
@@ -55,10 +58,6 @@
 .product-detail-desc p {
   border-radius: 15px;
   margin-top: 10px;
-}
-.reviews p {
-  color: #324d67;
-  margin-top: 0px;
 }
 .product-detail-desc .price {
   font-weight: 700 ;
