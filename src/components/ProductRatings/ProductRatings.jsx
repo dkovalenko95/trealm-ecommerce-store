@@ -1,17 +1,25 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { client } from '../../lib/client';
 import { AiFillStar } from 'react-icons/ai';
-
-const calculateAverageRating = ratings => {
-  if (!ratings.length) return 0;
-  const total = ratings.reduce((sum, rating) => sum + rating, 0);
-  const result = (total / ratings.length).toFixed(2);
-  return result;
-};
+import { calculateAverageRating } from '../../lib/utils';
 
 const ProductRatings = ({ product }) => {
-  const initialAverageRatings = calculateAverageRating(product.ratings);
-  const [averageRating, setAverageRating] = useState(initialAverageRatings);
+  const [averageRating, setAverageRating] = useState(() => {
+    if (!product.ratings) {
+      return 'This product has not yet been rated';
+    } else {
+      return calculateAverageRating(product.ratings);
+    }
+  });
+
+  useEffect(() => {
+    if (product.ratings) {
+      const newAverageRating = calculateAverageRating(product.ratings);
+      setAverageRating(newAverageRating);
+    } else {
+      setAverageRating('This product has not yet been rated');
+    }
+  }, [product]);
 
   const handleRatingChange = async newRating => {
     try {

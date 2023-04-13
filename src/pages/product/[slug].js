@@ -7,7 +7,8 @@ import ProductRatings from '../../components/ProductRatings/ProductRatings';
 import { useStateContext } from '../../context/StateContext';
 import styles from './slug.module.css';
 
-const ProductDetails = ({ product, products }) => {
+const ProductDetails = ({ product, similarProducts }) => {
+  console.log(product, similarProducts);
   const { image, name, details, price, oldPrice } = product;
   const [imgIndex, setImgIndex] = useState(0);
   const { incQty, decQty, qty, onAddProduct, setShowCart } = useStateContext();
@@ -45,14 +46,14 @@ const ProductDetails = ({ product, products }) => {
         <div className={styles['product-detail-desc']}>
           <h1>{name}</h1>
           <div className={styles.reviews}>
-            <div>
+            {/* <div>
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiOutlineStar />
             </div>
-            <p>(15)</p>
+            <p>(15)</p> */}
             <ProductRatings product={product} />
           </div>
           <h4>Details: </h4>
@@ -105,7 +106,7 @@ const ProductDetails = ({ product, products }) => {
         {/* Scrolling part - list of scrolling divs */}
         <div className={styles.marquee}>
           <div className={`${styles['maylike-products-container']} ${styles.track}`}>
-            {products.map(item => (
+            {similarProducts.map(item => (
               <Product key={item._id} product={item} />
             ))}
           </div>
@@ -118,24 +119,9 @@ const ProductDetails = ({ product, products }) => {
 // If a page has Dynamic Routes and uses getStaticProps(), it needs to define a list of paths to be statically generated.
 // By exporting getStaticPaths() (Static Site Generation) from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths()
 export const getStaticPaths = async () => {
-  const laptopsQuery = `*[_type == "laptops"] { slug { current } }`;
-  const laptopsProducts = await client.fetch(laptopsQuery);
-  const laptopsPaths = laptopsProducts.map(product => ({
-    params: { slug: product.slug.current }
-  }));
-  const headphonesQuery = `*[_type == "headphones"] { slug { current } }`;
-  const headphonesProducts = await client.fetch(headphonesQuery);
-  const headphonesPaths = headphonesProducts.map(product => ({
-    params: { slug: product.slug.current }
-  }));
-  const headphonesTWSQuery = `*[_type == "headphones-tws"] { slug { current } }`;
-  const headphonesTWSProducts = await client.fetch(headphonesTWSQuery);
-  const headphonesTWSPaths = headphonesTWSProducts.map(product => ({
-    params: { slug: product.slug.current }
-  }));
-  const otherQuery = `*[_type == "other"] { slug { current } }`;
-  const otherProducts = await client.fetch(otherQuery);
-  const otherPaths = otherProducts.map(product => ({
+  const query = `*[_type in ["laptops", "headphones", "headphones-tws", "other"]] { slug { current } }`;
+  const products = await client.fetch(query);
+  const paths = products.map(product => ({
     params: { slug: product.slug.current }
   }));
   
@@ -147,39 +133,16 @@ export const getStaticPaths = async () => {
 
 // Pre-render page at BUILD time using returned props 
 // getStaticProps() - tells Next comp to populate props and render into a static HTML page at BUILD time.
-// Fetch prod details
-// TODO: Fetch multiple documents in one go -> try to implement from Sanity docs
+// Fetch prod details && similar prods
 export const getStaticProps = async ({ params: { slug } }) => {
-  const laptopsQuery = `*[_type == "laptops" && slug.current == '${slug}'][0]`;
-  const headphonesQuery = `*[_type == "headphones" && slug.current == '${slug}'][0]`;
-  const headphonesTWSQuery = `*[_type == "headphones-tws" && slug.current == '${slug}'][0]`;
-  const otherQuery = `*[_type == "other" && slug.current == '${slug}'][0]`;
+  const query = `*[_type in ["laptops", "headphones", "headphones-tws", "other"] && slug.current == '${slug}']`;
+  const [ product ] = await client.fetch(query);
 
-  const laptopsProduct = await client.fetch(laptopsQuery);
-  const headphonesProduct = await client.fetch(headphonesQuery);
-  const headphonesTWSProduct = await client.fetch(headphonesTWSQuery);
-  const otherProduct = await client.fetch(otherQuery);
-
-  const product = laptopsProduct || headphonesProduct || headphonesTWSProduct || otherProduct;
-
-  const similarLaptoptsQuery = '*[_type == "laptops"]';
-  const similarHeadphonesQuery = '*[_type == "headphones"]';
-  const similarHeadphonesTWSQuery = '*[_type == "headphones-tws"]';
-  const similarOtherQuery = '*[_type == "other"]';
-
-  const similarLaptops = await client.fetch(similarLaptoptsQuery);
-  const similarHeadphones = await client.fetch(similarHeadphonesQuery);
-  const similarHeadphonesTWS = await client.fetch(similarHeadphonesTWSQuery);
-  const similarOther = await client.fetch(similarOtherQuery);
-
-  let products;
-  if (laptopsProduct) products = similarLaptops;
-  if (headphonesProduct) products = similarHeadphones;
-  if (headphonesTWSProduct) products = similarHeadphonesTWS;
-  if (otherProduct) products = similarOther;
+  const similarQuery = `*[_type == "${product._type}" && slug.current != '${slug}']`;
+  const similarProducts = await client.fetch(similarQuery);
 
   return {
-    props: { product, products }
+    props: { product, similarProducts }
   }
 };
 
