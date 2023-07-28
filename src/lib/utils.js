@@ -26,6 +26,6 @@ export const runFireworks = () => {
 export const calculateAverageRating = ratings => {
   if (!ratings.length) return 0;
   const total = ratings.reduce((sum, rating) => sum + rating, 0);
-  const result = (total / ratings.length).toFixed(2);
+  const result = (total / ratings.length).toFixed(1);
   return result;
 };

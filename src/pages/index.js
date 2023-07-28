@@ -1,42 +1,41 @@
-import React from 'react';
 import { client } from '../lib/client';
-import { SliderHeroBanner, Product, FooterBanner, Tabs } from './../components/index';
+import { SliderHeroBanner, ProductCard, FooterBanner, Tabs } from './../components/index';
 import styles from './index.module.css';
 
 const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headphonesTWSData, otherData }) => {
   const allProducts = [...laptoptsData, ...headphonesData, ...headphonesTWSData, ...otherData];
   const all = allProducts.map(product => (
-    <Product 
+    <ProductCard 
       key={product._id}
       product={product}
     />
   ));
   const bestsellers = bestsellersData.map(product => (
-    <Product
+    <ProductCard
       key={product._id}
       product={product}
     />
   ))
   const laptops = laptoptsData.map(product => (
-    <Product 
+    <ProductCard 
       key={product._id}
       product={product}
     />
   ));
   const headphones = headphonesData.map(product => (
-    <Product 
+    <ProductCard 
       key={product._id}
       product={product}
     />
   ));
   const headphonesTWS = headphonesTWSData.map(product => (
-    <Product 
+    <ProductCard 
       key={product._id}
       product={product}
     />
   ));
   const other = otherData.map(product => (
-    <Product 
+    <ProductCard 
       key={product._id}
       product={product}
     />
@@ -47,7 +46,7 @@ const Home = ({ bannerData, bestsellersData, laptoptsData, headphonesData, headp
       <SliderHeroBanner slides={bannerData} />
 
       <div className={styles['products-heading']}>
-        <h2>Choose product for you need</h2>
+        <h2>Choose products for you need</h2>
         <p>A great selection of high quality laptops and headphones</p>
       </div>
 
@@ -101,6 +100,6 @@ export const getServerSideProps = async () => {
       otherData,
     }
   };
-}; // -> whatever getServerSideProps() returns that gets populated in comp
+};
 
 export default Home;

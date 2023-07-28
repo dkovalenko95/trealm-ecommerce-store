@@ -1,12 +1,9 @@
-import React from 'react';
 import Link from 'next/link';
-
-// urlFor() - used to get url of img from Sanity dashboard
-import { urlFor } from '../../lib/client';
+import { urlFor } from '../../lib/client'; // -> get url of img from Sanity dashboard
 import { useStateContext } from '../../context/StateContext';
-import styles from './Product.module.css';
+import styles from './ProductCard.module.css';
 
-const Product = ({ product: { image, name, slug, price, oldPrice } }) => {
+const ProductCard = ({ product: { image, name, slug, price, oldPrice } }) => {
   const { setQty } = useStateContext();
   return (
     <div>
@@ -28,4 +25,4 @@ const Product = ({ product: { image, name, slug, price, oldPrice } }) => {
   );
 };
 
-export default Product;
+export default ProductCard;

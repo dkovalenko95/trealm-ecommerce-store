@@ -1,3 +1,10 @@
+.radio {
+  display: none;
+}
+.star { 
+  cursor: pointer;
+  transition: color 400ms;
+}
 .ratings-container {
   display: flex;
   gap: 20px;
@@ -6,21 +13,7 @@
 }
 
 .stars-container {
-  margin-top: 10px;
   display: flex;
+  align-items: center;
   gap: 3px;
 }
-
-.radio {
-  display: none;
-}
-
-.star { 
-  cursor: pointer;
-  transition: color 400ms;
-}
-
-.average-rating {
-  font-size: 18px;
-}
-

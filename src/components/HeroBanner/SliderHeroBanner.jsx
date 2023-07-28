@@ -54,7 +54,7 @@ const SliderHeroBanner = ({ slides }) => {
                 key={index}
                 className={currSlideIndex === index ? `${styles.dot} ${styles.active}` : `${styles.dot}`}
                 onClick={() => dotHandler(index)}
-              ></div>
+              />
             )
           }
         )}

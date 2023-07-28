@@ -1,4 +1,7 @@
-// Next js Stripe back-end - Stripe Checkout page
+// https://www.makeuseof.com/stripe-checkout-next-js-application-add/
+// https://matcha.fyi/nextjs-stripe/
+
+// Next.js Stripe back-end endpoint - Stripe Checkout page
 import Stripe from 'stripe';
 
 // Create Stripe Instance
