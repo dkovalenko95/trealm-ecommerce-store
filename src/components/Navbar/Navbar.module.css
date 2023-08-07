@@ -1,5 +1,5 @@
-.navbar-container {
-  background-color: rgb(255, 255, 255, 0.92);
+.container {
+  background-color: rgb(255, 255, 255, 0.85);
   position: fixed;
   top: 0;
   height: 75px;

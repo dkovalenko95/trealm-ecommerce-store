@@ -1,0 +1,72 @@
+.sliderContainer {
+  position: relative;
+  height: 535px;
+  width: 100%;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+}
+.arrowPrev {
+  display: block;
+  position: absolute;
+  top: 45%;
+  transform: translateX(0, -50%);
+  left: 15px;
+  font-size: 28px;
+  color: #005689;
+  z-index: 100;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.arrowPrev:hover {
+  transform: scale(1.1, 1.1);
+}
+.arrowNext {
+  display: block;
+  position: absolute;
+  top: 45%;
+  transform: translateX(0, -50%);
+  right: 15px;
+  font-size: 28px;
+  color: #005689;
+  z-index: 100;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.arrowNext:hover {
+  transform: scale(1.1, 1.1);
+}
+.container-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #005689;
+  margin: 0 5px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.dot.active {
+  background: #005689;
+  transition: all 0.5s;
+}
+.dot:hover, .dot.active:hover {
+  transform: scale(1.1, 1.1);
+}
+
+@media screen and (max-width:576px) {
+  .arrowNext {
+    display: none;
+  }
+  .arrowPrev {
+    display: none;
+  }
+}

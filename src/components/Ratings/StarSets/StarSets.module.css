@@ -1,0 +1,17 @@
+.ratings-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 38px;
+}
+.stars-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.average-rating {
+  color: #324d67;
+  font-size: 20px;
+}

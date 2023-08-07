@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
@@ -17,7 +17,7 @@ const Cart = () => {
     // Get specific instance of Stripe
     const stripe = await getStripe();
 
-    // API req to our own Nextjs backend
+    // API req to Next.js backend endpoint
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: {
