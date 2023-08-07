@@ -22,3 +22,10 @@ export const runFireworks = () => {
     confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
   }, 250);
 };
+
+export const calculateAverageRating = ratings => {
+  if (!ratings.length) return 0;
+  const total = ratings.reduce((sum, rating) => sum + rating, 0);
+  const result = (total / ratings.length).toFixed(1);
+  return result;
+};

@@ -1,4 +1,4 @@
-.footer-container {
+.container {
   color: #324d67;
   text-align: center;
   margin-top: 20px;
@@ -11,7 +11,7 @@
   align-items: center;
   gap: 10px;
 }
-.footer-container .icons {
+.icons {
   font-size: 30px;
   display: flex;
   gap: 10px;

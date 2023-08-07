@@ -1,0 +1,76 @@
+.btns {
+  margin-top: 40px;
+  display: flex;
+  gap: 40px;
+}
+.btns .add-to-cart {
+  background-color: white;
+  color: #ff5a1e;
+  width: 200px;
+  padding: 10px 20px;
+  border: 1px solid #ff5a1e;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.btns .add-to-cart:hover {
+  transform:scale(1.05,1.05)
+}
+.btns .buy-now {
+  background-color: #ff5a1e;
+  color: white;
+  width: 200px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+.btns .buy-now:hover {
+  transform:scale(1.05,1.05)
+}
+
+@media screen and (max-width:992px) {
+  .btns {
+    margin-top: 30px;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .btns {
+    gap: 25px;
+  }
+  .btns .add-to-cart {
+    width: 180px;
+  }
+  .btns .buy-now {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .btns {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width:425px) {
+  .btns {
+    gap: 15px;
+  }
+  .btns .buy-now {
+    width: 150px;
+  }
+  .btns .add-to-cart {
+    width: 150px;
+  }
+}
+

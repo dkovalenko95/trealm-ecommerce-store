@@ -1,9 +1,8 @@
-import React from 'react';
 import Link from 'next/link';
 import { urlFor } from '../../lib/client';
 import styles from './FooterBanner.module.css';
 
-const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, smallText, midText, product, buttonText, image, desc, slug } }) => {
+const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, smallText, midText, buttonText, image, desc, slug } }) => {
   return (
     <div className={styles['footer-banner-container']}>
       <div className={styles['banner-desc']}>

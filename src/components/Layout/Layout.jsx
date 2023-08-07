@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
@@ -12,20 +11,18 @@ const Layout = ({ children }) => {
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon.png'></link>
       </Head>
 
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
 
-      <div className={styles.layout}>
+      <main className={styles.layout}>
+        {/* children - <Component/> in _app.js */}
+        {children}
+      </main>
 
-        <main className={styles['main-container']}>
-          {/* children - <Component/> in _app.js */}
-          {children}
-        </main>
-
-        <footer>
-          <Footer />
-        </footer>
-
-      </div>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 };

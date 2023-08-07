@@ -1,0 +1,19 @@
+.radio {
+  display: none;
+}
+.star { 
+  cursor: pointer;
+  transition: color 400ms;
+}
+.ratings-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.stars-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}

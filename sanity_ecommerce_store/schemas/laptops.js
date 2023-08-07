@@ -47,6 +47,22 @@ export default {
       title: 'Details',
       type: 'string',
     },
+    // Ratings
+    {
+      name: 'ratings',
+      title: 'Ratings',
+      type: 'array',
+      of: [{ type: 'number' }],
+      options: {
+        hotspot: true,
+      },
+      // readOnly: true
+    },
   ],
+  // cors: {
+  //   allowOrigins: ['http://localhost:3000'],
+  //   allowHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
+  //   allowCredentials: true
+  // },
 };
 
